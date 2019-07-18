@@ -4,32 +4,15 @@ import numpy as np
 import time
 import random
 from PIL import Image
+import adb
 
-def connect():
-    while True:
-        print('---------------------------------')
-        print('0. exit')
-        print('1. devices')
-        print('2. connect 127.0.0.1:62001')
-        print('---------------------------------')
-        cmd = input('press input the number:')
-
-        if cmd == '0':
-            break
-        elif cmd == '1':
-            os.system('adb devices')
-        elif cmd == '2':
-            os.system('adb connect 127.0.0.1:62001')
-
-        cmd = input('Return to the previous menu(y) or continue(n):')
-
-        if cmd == 'y':
-            break
+androidAdb = adb.adb('127.0.0.1:62001')
 
 def get_screenshot(id):
-    os.system('adb -s 127.0.0.1:62001 shell screencap -p /sdcard/pinduoduo/0.png')
-    os.system('adb -s 127.0.0.1:62001 pull /sdcard/pinduoduo/0.png ./temp/%s.png' % str(id))
-    os.system("adb -s 127.0.0.1:62001 shell rm /sdcard/pinduoduo/0.png")
+    androidAdb.GetScreenShots('/sdcard/pinduoduo/0.png')
+    androidAdb.PullFileToComputer('/sdcard/pinduoduo/0.png', './temp/%s.png' % str(id))
+    androidAdb.RemoveFile('/sdcard/pinduoduo/0.png')
+    pass
 
 def remove_file():
     files = os.listdir('./temp/')
@@ -100,5 +83,6 @@ def main():
 
 
 if __name__ == '__main__':
+    adb.adb('os.system')
     main()
 

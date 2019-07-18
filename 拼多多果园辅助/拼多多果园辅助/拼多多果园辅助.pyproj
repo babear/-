@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="adb.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="拼多多果园辅助.py" />
   </ItemGroup>
   <ItemGroup>
