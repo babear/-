@@ -25,10 +25,29 @@
     <Compile Include="adb.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AutoPinDuoDuo1.py" />
+    <Compile Include="ImageMatch.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImgHelper.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PinDuoDuo.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="拼多多果园辅助.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="CondaEnv|CondaEnv|Anaconda_Python36" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Img\BringWaterDroplets.png" />
+    <Content Include="Img\comein.png" />
+    <Content Include="Img\Kettle.png" />
+    <Content Include="Img\SeeGoodsFlag.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

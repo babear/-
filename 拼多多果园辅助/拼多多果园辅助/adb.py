@@ -23,7 +23,8 @@ class adb(object):
         os.system("adb -s %s shell rm %s" % (self.__ip, aPhonePath))
         pass
 
-    def Devices(self):
+    @classmethod
+    def Devices():
         os.system('adb devices')
         pass
 
