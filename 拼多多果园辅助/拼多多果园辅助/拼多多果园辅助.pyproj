@@ -46,6 +46,9 @@
   <ItemGroup>
     <Content Include="Img\BringWaterDroplets.png" />
     <Content Include="Img\comein.png" />
+    <Content Include="Img\VerifyDailyGetWater.png" />
+    <Content Include="Img\DailyGetWaterFlag.png" />
+    <Content Include="Img\GoToFinish.png" />
     <Content Include="Img\Kettle.png" />
     <Content Include="Img\SeeGoodsFlag.png" />
   </ItemGroup>

@@ -6,6 +6,7 @@ import random
 from PIL import Image
 import adb
 import ImageMatch
+import PinDuoDuo
 
 androidAdb = adb.adb('127.0.0.1:62001')
 
@@ -23,6 +24,8 @@ def remove_file():
 
 
 def main():
+    
+
     get_screenshot(0)
     screen = cv2.imread('./temp/0.png', 0)
     shuihu = cv2.imread('shuihu.png', 0)
@@ -48,7 +51,16 @@ def main():
         pass
     pass
 
+def test():
+    androidAdb = adb.adb('127.0.0.1:62001')
+    androidAdb.Connect()
+
+    pinDuoDuo = PinDuoDuo.PinDuoDuoTask(androidAdb)
+    pinDuoDuo.RemoveTempFiles();
+    pinDuoDuo.Task_DailyGetWater()
+    pass
+
 if __name__ == '__main__':
-    adb.adb('os.system')
-    main()
+    # main()
+    test()
 

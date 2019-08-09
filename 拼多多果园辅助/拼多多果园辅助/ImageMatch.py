@@ -45,3 +45,19 @@ def SetMatchFlag(screen, matchResult):
     cv2.polylines(screen,[np.int32(matchResult)],True,0,5,cv2.LINE_AA)
     pass
 
+def GetMaxY(matchResult):
+    return int(np.amax(matchResult, axis = 0)[0][1])
+    pass
+
+def GetMinY(matchResult):
+    return int(np.amin(matchResult, axis = 0)[0][1])
+    pass
+
+def GetMaxX(matchResult):
+    return int(np.amax(matchResult, axis = 0)[0][0])
+    pass
+
+def GetMinX(matchResult):
+    return int(np.amin(matchResult, axis = 0)[0][0])
+    pass
+

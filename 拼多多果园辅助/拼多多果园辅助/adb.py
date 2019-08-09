@@ -23,7 +23,19 @@ class adb(object):
         os.system("adb -s %s shell rm %s" % (self.__ip, aPhonePath))
         pass
 
-    @classmethod
+    def Click(self, x, y):
+        os.system('adb -s %s shell input tap %i %i' % (self.__ip, x, y))
+        pass
+
+    def PressKey(self, keycode):
+        os.system('adb -s %s shell input keyevent %s' % (self.__ip, keycode))
+        pass
+
+    def PressBackKey(self):
+        self.PressKey(4)
+        pass
+
+    @staticmethod
     def Devices():
         os.system('adb devices')
         pass
