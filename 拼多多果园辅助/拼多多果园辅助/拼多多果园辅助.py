@@ -24,8 +24,6 @@ def remove_file():
 
 
 def main():
-    
-
     get_screenshot(0)
     screen = cv2.imread('./temp/0.png', 0)
     shuihu = cv2.imread('shuihu.png', 0)
@@ -57,6 +55,7 @@ def test():
 
     pinDuoDuo = PinDuoDuo.PinDuoDuoTask(androidAdb)
     pinDuoDuo.RemoveTempFiles();
+    #pinDuoDuo.Task_SeeGoods()
     pinDuoDuo.Task_DailyGetWater()
     pass
 

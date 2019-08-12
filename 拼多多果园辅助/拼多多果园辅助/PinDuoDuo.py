@@ -3,6 +3,7 @@ import ImageMatch
 import ImgHelper
 import time
 import os
+import pytesseract
 
 class PinDuoDuoTask(object):
 
@@ -57,6 +58,10 @@ class PinDuoDuoTask(object):
         cv2.imwrite(os.path.join(self.__tempFolder, '%s_check.png' % str(fileName)), img)
         pass
 
+    def WriteNumberOfWaterImg(self, fileName, img):
+        cv2.imwrite(os.path.join(self.__tempFolder, 'NumberOfWater_%s.png' % str(fileName)), img)
+        pass
+
     def Task_SeeGoods(self):
         print("Start see goods task.")
 
@@ -85,6 +90,8 @@ class PinDuoDuoTask(object):
                     self.__adb.PressBackKey()
                     time.sleep(1)
                     self.__adb.Click(x + img_x, y + img_y)
+                    time.sleep(0.5)
+                    self.__adb.PressBackKey()
                     time.sleep(0.5)
                     self.__adb.PressBackKey()
                     time.sleep(0.5)
@@ -140,8 +147,6 @@ class PinDuoDuoTask(object):
                         time.sleep(0.5)
                         self.__adb.PressBackKey()
                         time.sleep(0.5)
-                        self.__adb.PressBackKey()
-                        time.sleep(0.5)
                         pass
                     else:
                         pass
@@ -160,4 +165,31 @@ class PinDuoDuoTask(object):
             pass
 
         print("End daily get water task.");
+        pass
+
+    def Task_AutoWatering(self):
+        print("Start auto watering task.")
+
+        self.UpdateScreenImg()
+        matchResult = ImageMatch.FlannMatch(self.__screenImg, self.__kettleImg)
+        if not matchResult is None:
+            numberOfWaterImg = self.__screenImg[1605:1660 ,874:1024]
+            self.WriteNumberOfWaterImg(waterNumber, numberOfWaterImg)
+            waterNumber = pytesseract.image_to_string(numberOfWaterImg,'osd+eng')
+            waterNumber = int(waterNumber[0:-1])
+
+            if waterNumber < 10:
+                print('water number is less')
+                return
+            else:
+                x, y = ImageMatch.GetMatchResultCentralPoint(matchResult)
+                self.__adb.Click(x, y)
+                time.sleep(16)
+                pass
+            pass
+        else:
+            print("Can't find the kettle.")
+            pass
+
+        print("Start auto watering task.")
         pass
